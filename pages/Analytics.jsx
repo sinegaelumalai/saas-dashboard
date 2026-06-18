@@ -83,6 +83,7 @@ const customers = [
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 import {
     FaEllipsisH,
@@ -93,6 +94,44 @@ import {
 const Analytics = () => {
     const [openMenu, setOpenMenu] = useState(null);
     const [showForm, setShowForm] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [gender, setGender] = useState("Male");
+
+    const handleAddCustomer = () => {
+
+        if (
+            !firstName ||
+            !lastName ||
+            !email ||
+            !phone
+        ) {
+            toast.warning("Please fill all fields");
+            return;
+        }
+
+        const newCustomer = {
+            id: customerList.length + 1,
+            image: "https://i.pravatar.cc/40",
+            name: `${firstName} ${lastName}`,
+            email,
+            phone,
+            gender,
+        };
+
+        setCustomerList([...customerList, newCustomer]);
+
+        toast.success("Customer added successfully!");
+
+        setShowForm(false);
+
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+    };
 
     const [customerList, setCustomerList] = useState(customers);
 
@@ -109,6 +148,7 @@ const Analytics = () => {
                     (customer) => customer.id !== id
                 )
             );
+            toast.success("Customer deleted successfully!");
         }
 
         setOpenMenu(null);
@@ -240,7 +280,7 @@ const Analytics = () => {
 
                                                 <button
                                                     onClick={() => {
-                                                        alert(`Edit ${customer.name}`);
+                                                        toast.info(`Editing ${customer.name}`);
                                                         setOpenMenu(null);
                                                     }}
                                                     className="flex items-center gap-2 w-full px-4 py-2 text-blue-500 hover:bg-gray-50"
@@ -375,6 +415,7 @@ const Analytics = () => {
                         </div>
 
                         <button
+                            onClick={handleAddCustomer}
                             className="w-full h-14 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-medium transition"
                         >
                             Add Customer

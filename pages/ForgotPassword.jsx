@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -10,12 +11,23 @@ const ForgotPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email) {
-      alert("Please enter your email");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email.trim()) {
+      toast.warning("Email is required");
       return;
     }
 
-    navigate("/confirm");
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    toast.success("Password reset link sent successfully!");
+
+    setTimeout(() => {
+      navigate("/confirm");
+    }, 1000);
   };
 
   return (

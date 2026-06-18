@@ -65,7 +65,7 @@ const Confirm = () => {
                     onClick={() => navigate("/")}
                     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-medium"
                 >
-                    Go to Home
+                    Go to Login
                 </motion.button>
             </motion.div>
         </motion.div>
