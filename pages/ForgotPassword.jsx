@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import base from "../assets/base.png";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -51,9 +52,11 @@ const ForgotPassword = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center text-white text-4xl shadow-lg">
-            ⌁
-          </div>
+          <img
+            src={base}
+            alt="Base Logo"
+            className="w-15 h-15 object-contain"
+          />
 
           <h1 className="text-4xl font-bold mt-6">
             Recover

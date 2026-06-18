@@ -4,6 +4,7 @@ import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import signup from "../assets/signup.png";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import base from "../assets/base.png";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -98,9 +99,11 @@ const Register = () => {
           {/* Logo */}
           <div className="flex flex-col items-center mb-3">
 
-            <div className="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xl shadow-md">
-              ⌁
-            </div>
+            <img
+                           src={base}
+                           alt="Base Logo"
+                           className="w-15 h-15 object-contain"
+                         />
 
             <h1 className="text-2xl md:text-3xl font-bold mt-2">
               Sign Up

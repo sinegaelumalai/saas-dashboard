@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaGoogle, FaFacebookF, FaEye, FaEyeSlash } from "react-icons/fa";
 import loginpage from "../assets/loginpage.png";
 import { motion } from "framer-motion";
+import base from "../assets/base.png";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -69,9 +70,12 @@ const Login = () => {
 
           <div className="flex flex-col items-center mb-5">
 
-            <div className="w-14 h-14 rounded-full bg-indigo-600 flex items-center justify-center text-white text-2xl shadow-lg">
-              ⌁
-            </div>
+              <img
+                src={base}
+                alt="Base Logo"
+                className="w-15 h-15 object-contain"
+              />
+           
 
             <h1 className="text-3xl font-bold mt-3">
               Log in
